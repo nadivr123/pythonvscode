@@ -12,4 +12,5 @@ if upload_csv:
     edit_csv = st.data_editor(csv_file)
 
     if st.button("Save the file"):
-        pass
+        saved_csv = edit_csv.to_csv(upload_csv,index=False)
+        st.success("Your edited file has maybe been saved if this app works properly")
