@@ -16,31 +16,32 @@ if menu == "submit score":
     c1,c2 = st.columns(2)
 
     with c1:
-        math = st.number_input("Enter the students math results: ",1,7)
-        english = st.number_input("Enter the students english results; ",1,7)
-        science = st.number_input("Enter the students science results: ",1,7)
+        math = st.number_input("Enter the students math semester grade: ",1,7)
+        english = st.number_input("Enter the students english semester grade; ",1,7)
+        science = st.number_input("Enter the students science semester grade: ",1,7)
     with c2:
-        hum = st.number_input("Enter the students humanities results:",1,7)
-        art = st.number_input("Enter the students art results: ",1,7)
+        hum = st.number_input("Enter the students humanities semester grade:",1,7)
+        art = st.number_input("Enter the students art semester grade: ",1,7)
+        tech = st.number_input("Enter the students tech semester grade: ",1,7)
 
-    total = hum + art + science + english + math
-    avg = int(total/5)
+    total = hum + art + science + english + math + tech
+    avg = int(total/6)
 
-    if avg == 8:
+    if avg == 7:
         grade = "A+"
-    elif avg == 7:
-        grade = "A"
     elif avg == 6:
-        grade = "B+"
+        grade = "A"
     elif avg == 5:
-        grade = "B"
+        grade = "B+"
     elif avg == 4:
+        grade = "B"
+    elif avg == 3:
         grade = "C"
-    elif avg <= 3:
+    elif avg <= 2:
         grade = "F"
         #Name,Math,Science,English,Humanities,Art,Total,Average,Grade
     if st.button("Submit student scores"):
-        student_dict = {'Name':[name], 'Math':[math], 'Science':[science], 'English':[english], 'Humanities':[hum], 'Art':[art],
+        student_dict = {'Name':[name], 'Math':[math], 'Science':[science], 'English':[english], 'Humanities':[hum], 'Art':[art], 'Tech':[tech],
                     'Total':[total], 'Average':[avg], 'Grade':[grade]}
         student_database = pd.DataFrame(student_dict)
         #i created a dictionary of csv columns:python variable,
@@ -51,7 +52,16 @@ if menu == "submit score":
         st.success(f"{name}'s total score is {total}, {name}'s average is {avg}, {name}'s final grade is {grade}")
 
 
+#Math,Science,English,Humanities,Art,Tech
 if menu == "database/chart":
     st.table(database) # to show the data in a table
-
-
+    subject = ['Math','English','Humanities','Science','Art','Tech']
+    subjecttable = database[subject].mean().reset_index()
+    subjectrename = subjecttable.rename(columns={'index':'Subject',0:'Grade'})
+    chart = st.radio("choose the type of graph/chart you want:",['choose','bar graph','pie chart'],horizontal=True)
+    if chart == 'bar graph':
+        barchart = px.bar(subjectrename, x='Subject',y='Grade')
+        st.plotly_chart(barchart)
+    elif chart == 'pie chart':
+        piechart = px.pie(subjectrename, names='Subject',values='Grade')
+        st.plotly_chart(piechart)
