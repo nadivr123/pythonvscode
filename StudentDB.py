@@ -3,9 +3,8 @@ import pandas as pd
 import plotly.express as px
 
 database = pd.read_csv("scores.csv") # used to read everything in the csv fine
-
-
-menu = st.sidebar.selectbox("menu",["submit score","database/chart"])
+menu = st.sidebar.selectbox("menu",["submit score","database/chart","Student File"])
+studentID = 'Student_'+str(len(database)+1)
 
 if menu == "submit score":
 
@@ -41,7 +40,7 @@ if menu == "submit score":
         grade = "F"
         #Name,Math,Science,English,Humanities,Art,Total,Average,Grade
     if st.button("Submit student scores"):
-        student_dict = {'Name':[name], 'Math':[math], 'Science':[science], 'English':[english], 'Humanities':[hum], 'Art':[art], 'Tech':[tech],
+        student_dict = {'StudentID':[studentID],'Name':[name], 'Math':[math], 'Science':[science], 'English':[english], 'Humanities':[hum], 'Art':[art], 'Tech':[tech],
                     'Total':[total], 'Average':[avg], 'Grade':[grade]}
         student_database = pd.DataFrame(student_dict)
         #i created a dictionary of csv columns:python variable,
@@ -58,10 +57,22 @@ if menu == "database/chart":
     subject = ['Math','English','Humanities','Science','Art','Tech']
     subjecttable = database[subject].mean().reset_index()
     subjectrename = subjecttable.rename(columns={'index':'Subject',0:'Grade'})
-    chart = st.radio("choose the type of graph/chart you want:",['choose','bar graph','pie chart'],horizontal=True)
+    chart = st.radio("choose the type of graph/chart you want:",['bar graph','pie chart'],horizontal=True)
     if chart == 'bar graph':
         barchart = px.bar(subjectrename, x='Subject',y='Grade')
         st.plotly_chart(barchart)
     elif chart == 'pie chart':
         piechart = px.pie(subjectrename, names='Subject',values='Grade')
         st.plotly_chart(piechart)
+
+if menu == "Student File":
+    header1, header2, header3 = st.columns(3)
+
+    with header2:
+        st.subheader("Find Student file")
+        findID = st.text_input("Enter Student ID")
+        find = st.button("Find Student")
+
+    if find:
+        if findID:
+            pass

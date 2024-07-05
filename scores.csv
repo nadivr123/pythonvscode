@@ -1,6 +1,6 @@
-Name,Math,Science,English,Humanities,Art,Tech,Total,Average,Grade
-Nayeli,6,5,6,5,7,6,35,5,B+
-Gerard,2,2,3,3,4,1,15,2,F
-Nadiv,7,7,7,6,6,7,40,6,A
-,1,1,1,1,1,1,6,1,F
-,1,1,1,1,1,1,6,1,F
+StudentID,Name,Math,Science,English,Humanities,Art,Tech,Total,Average,Grade
+Student_1,Jayden,6,3,4,2,3,5,23,3,C
+Student_2,Hayden,5,3,4,3,7,6,28,4,B
+Student_3,Kayden,6,4,6,3,4,5,28,4,B
+Student_4,Temitayo,5,4,2,2,1,7,21,3,C
+Student_5,Nadiv,7,7,6,6,6,7,39,6,A
