@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 database = pd.read_csv("scores.csv") # used to read everything in the csv fine
+st.sidebar.write("**Made By Nadiv**")
 menu = st.sidebar.selectbox("menu",["submit score","database/chart","Student File"])
 studentID = 'Student_'+str(len(database)+1)
 
