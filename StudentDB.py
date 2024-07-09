@@ -77,5 +77,5 @@ if menu == "Student File":
 
     if find:
         if findID:
-            searchresult = database[database['StudentID'] == findID]
+            searchresult = database[database['StudentID'].str.lower == findID]
             st.table(searchresult)
