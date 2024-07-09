@@ -9,3 +9,7 @@ if age >= 18:
         st.success("thank you for voting")
 else:
     st.write("you are still to young to vote for the elections")
+
+
+
+#ST.WRITE('YES'?)
