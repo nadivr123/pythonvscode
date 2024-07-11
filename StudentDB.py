@@ -70,7 +70,7 @@ if menu == "database/chart":
 if menu == "Student File":
     header1, header2, header3 = st.columns(3)
 
-    with header2:
+    with header1:
         st.subheader("Find Student file")
         findID = st.text_input("Enter Student ID")
         find = st.button("Find Student")
@@ -79,3 +79,20 @@ if menu == "Student File":
         if findID:
             searchresult = database[database['StudentID'].str.lower() == findID.lower()]
             st.table(searchresult)
+            
+            getname = searchresult['Name'].iloc[0]
+            getmath = searchresult['Math'].iloc[0]
+            geteng = searchresult['English'].iloc[0]
+            gethum = searchresult['Humanities'].iloc[0]
+            getsci = searchresult['Science'].iloc[0]
+            getart = searchresult['Art'].iloc[0]
+            gettech = searchresult['Tech'].iloc[0]
+            getgrade = searchresult['Grade'].iloc[0]
+
+            h1, h2, h3 = st.columns([2,4,2])
+            with h2:
+                st.title(":red[TEMITAYO COLLEGE]")
+                sub1, sub2, sub3 = st.columns([2,4,2])
+                with sub2:
+                    st.write("INTERNATIONAL SCHOOL")
+            st.divider()
