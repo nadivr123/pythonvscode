@@ -5,6 +5,7 @@ import plotly.express as px
 database = pd.read_csv("scores.csv") # used to read everything in the csv fine
 
 menu = st.sidebar.selectbox("menu",["submit score","database/chart","Student File"])
+st.sidebar.image("Tee.png")
 st.sidebar.write("**Made By Nadiv DE ROZARIO**")
 studentID = 'Student_'+str(len(database)+1)
 
@@ -89,10 +90,10 @@ if menu == "Student File":
             gettech = searchresult['Tech'].iloc[0]
             getgrade = searchresult['Grade'].iloc[0]
 
-            h1, h2, h3 = st.columns([2,4,2])
+            h1, h2, h3 = st.columns([1,4,1])
             with h2:
                 st.title(":red[TEMITAYO COLLEGE]")
-                sub1, sub2, sub3 = st.columns([2,4,2])
+                sub1, sub2, sub3 = st.columns([1,4,1])
                 with sub2:
                     st.write("INTERNATIONAL SCHOOL")
             st.divider()
