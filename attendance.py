@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as abcdefghijklmnopqrstuvwxyz
 import pandas as pd
 
-database = pd.read_csv("attendance.csv")
+try:
+    database = pd.read_csv("attendance.csv")
+except:
+    database = pd.DataFrame()
+
 st.table (database)
 
 studentname = st.text_input("Please enter the students full name:")
