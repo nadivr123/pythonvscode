@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
+#remember the invoice generator
 menu = st.sidebar.selectbox("menu",["Questions","Score"])
 score = 0
 

@@ -1,5 +1,5 @@
 import streamlit as st
-#remember the invoice generator
+
 st.set_page_config(layout="wide")
 
 menu = st.sidebar.selectbox("menu",["appetizers","drinks","main course","desserts"])
