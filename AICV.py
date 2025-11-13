@@ -12,7 +12,7 @@ st.set_page_config(layout='wide',page_title="Jop Application A.I CV",page_icon='
 
 #--------------------CONFIG-------------------------------
 
-api_key = st.text_input("Enter your API key")  #access key to use their services
+api_key = st.sidebar.text_input("Enter your API key")  #access key to use their services
 api_link = 'https://openrouter.ai/api/v1/chat/completions' #link to connect to openrouter
 
 setup = {'Authorization': f'Bearer {api_key}', 'Content-Type':'application/json'}
